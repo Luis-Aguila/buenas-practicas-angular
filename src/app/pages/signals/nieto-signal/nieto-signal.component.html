@@ -1,0 +1,24 @@
+<div class="card -mt-2" style="border-radius: 20px;">
+  <div class="grid p-fluid -mt-3 -mb-3">
+    <div class="col-12">
+      <h5>Componente Nieto</h5>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="col-6">
+      <label for="">valor Recibido (del signal)</label>
+      <p>{{ signalSuma() }}</p>
+      <!-- <input type="number" pInputText #numeroUnoIn="ngModel" [(ngModel)]="sumaInput" required (keyup)="actualizarValorPadre()"> -->
+    </div>
+    <div class="col-6">
+      <label for="">Nuevo valor Suma (del signal)</label>
+      <input type="number" pInputText #numeroDosIn="ngModel" [(ngModel)]="nuevoValorSuma" required>
+    </div>
+    <div class="col-12">
+      <button pButton label="Actualizar Signal" (click)="asignarNuevoValorSignal()"></button>
+    </div>
+    <div class="col-12">
+      <button pButton label="Inicializar Signal" (click)="inicializarNuevoValorSignal()"></button>
+    </div>
+  </div>
+</div>

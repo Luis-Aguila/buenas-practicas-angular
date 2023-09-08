@@ -1,0 +1,139 @@
+<h3>Rut Variable: {{ rutUser }}</h3>
+<h3 *ngIf="fs.validarRut(rutUser)">Rut Pipe: El rut {{ rutUser | rut }}, es válido!!</h3>
+<h3 *ngIf="!fs.validarRut(rutUser)">El rut {{ rutUser }}, es inválido!!</h3>
+<div class="card -mt-2" style="border-radius: 20px;">
+  <div class="grid p-fluid -mt-3 -mb-3">
+    <div class="col-12">
+      <h5>Form Template</h5>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="col-6">
+      <label for="">Nombre</label>
+      <input type="text" pInputText #nombreng="ngModel" [(ngModel)]="usuariotemp.nombre" required>
+    </div>
+    <div class="col-6">
+      <label for="">Apellido</label>
+      <input type="text" pInputText #apellidong="ngModel" [(ngModel)]="usuariotemp.apellido" required>
+    </div>
+    <div class="col-12">
+      <button pButton label="Agregar" (click)="verFormTemp()"></button>
+    </div>
+  </div>
+</div>
+
+<div class="card -mt-2" style="border-radius: 20px;">
+  <div class="grid p-fluid -mt-3 -mb-3">
+    <div class="col-12">
+      <h5>Form Reactivo</h5>
+    </div>
+  </div>
+  
+  <form (ngSubmit)="verUsuarioReactivo()" #forma="ngForm">
+    <div class="grid p-fluid">
+      <div class="col-6">
+        <label for="">Nombre</label>
+        <input type="text" pInputText name="nombrereac" required #nombrereac="ngModel" [(ngModel)]="usuarioReactivo.nombre">
+        <small id="username-help" class="p-error" *ngIf="nombrereac.dirty && !nombrereac.valid">El nombre es requerido</small>
+      </div>
+      <div class="col-6">
+        <label for="">Apellido</label>
+        <input type="text" pInputText name="apellidoreac" required #apellidoreac="ngModel" [(ngModel)]="usuarioReactivo.apellido">
+        <small id="username-help" class="p-error" *ngIf="apellidoreac.dirty && !apellidoreac.valid">El apellido es requerido</small>
+      </div>
+      <div class="col-6">
+        <label for="">Dirección</label>
+        <input type="text" pInputText name="direccionreac" #direccionreac="ngModel" [(ngModel)]="usuarioReactivo.direccion">
+      </div>
+      <div class="col-6">
+        <label for="">Edad</label>
+        <input type="number" pInputText name="edadreac" #edadreac="ngModel" [(ngModel)]="usuarioReactivo.edad">
+      </div>
+      <div class="col-12">
+        <button type="submit" [disabled]="!forma.valid" pButton label="Agregar"></button>
+      </div>
+    </div>
+  </form>
+    
+</div>
+
+<div class="card -mt-2" style="border-radius: 20px;">
+  <div class="grid p-fluid -mt-3 -mb-3">
+    <div class="col-12">
+      <h5>Form Reactivo Build</h5>
+    </div>
+  </div>
+  
+  <form [formGroup]="usuarioReactivoForm" (ngSubmit)="verUsuarioReactivoBuil(usuarioReactivoForm.value)">
+    <div class="grid p-fluid">
+      <div class="col-6">
+        <label for="nombre">Nombre</label>
+        <input type="text" pInputText formControlName="nombre">
+        <small id="username-help" 
+          class="p-error" 
+          *ngIf="usuarioReactivoForm.controls.nombre.errors?.['required'] && usuarioReactivoForm.controls.nombre.dirty">
+          El nombre es requerido
+        </small>
+        <small id="username-help" 
+          class="p-error" 
+          *ngIf="usuarioReactivoForm.controls.nombre.errors?.['pattern']">
+          Debe de ser un nombre válido
+        </small>
+      </div>
+      <div class="col-6">
+        <label for="apellido">Apellido</label>
+        <input type="text" pInputText formControlName="apellido">
+        <small id="username-help" 
+          class="p-error" 
+          *ngIf="usuarioReactivoForm.controls.apellido.errors?.['required'] && usuarioReactivoForm.controls.apellido.dirty">
+          El apellido es requerido
+        </small>
+        <small id="username-help" 
+          class="p-error" 
+          *ngIf="usuarioReactivoForm.controls.apellido.errors?.['pattern']">
+          Debe de ser un apellido válido
+        </small>
+      </div>
+      <div class="col-6">
+        <label for="direccion">Dirección</label>
+        <input type="text" pInputText formControlName="direccion">
+        <small id="username-help" 
+          class="p-error" 
+          *ngIf="usuarioReactivoForm.controls.direccion.errors?.['maxlength']">
+          La dirección es muy larga
+        </small>
+      </div>
+      <div class="col-6">
+        <label for="edad">Edad</label>
+        <input type="number" pInputText formControlName="edad">
+      </div>
+      <div class="col-12">
+        <label for="poseefecha">Posee Fecha</label>
+        <p-checkbox formControlName="poseefecha" [binary]="true"></p-checkbox>
+      </div>
+
+      <div class="col-6" *ngIf="usuarioReactivoForm.value.poseefecha">
+        <label for="fechainicio">Fecha Inicio</label>
+        <p-calendar formControlName="fechainicio"></p-calendar>
+        <small id="username-help" 
+          class="p-error" 
+          *ngIf="usuarioReactivoForm.controls.fechainicio.errors?.['required'] && usuarioReactivoForm.controls.fechainicio.dirty">
+          La fecha de inicio es requerida
+        </small>
+      </div>
+      <div class="col-6" *ngIf="usuarioReactivoForm.value.poseefecha">
+        <label for="fechafin">Fecha Fin</label>
+        <p-calendar formControlName="fechafin"></p-calendar>
+        <small id="username-help" 
+          class="p-error" 
+          *ngIf="usuarioReactivoForm.controls.fechafin.errors?.['required'] && usuarioReactivoForm.controls.fechafin.dirty">
+          La fecha de fin es requerida
+        </small>
+      </div>
+      <div class="col-12">
+        <button type="submit" [disabled]="usuarioReactivoForm.status == 'INVALID'" pButton label="Agregar"></button>
+      </div>
+    </div>
+  </form>
+    
+</div>

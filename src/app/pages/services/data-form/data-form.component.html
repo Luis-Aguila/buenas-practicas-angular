@@ -1,0 +1,16 @@
+<div class="card" style="border-radius: 20px;">
+  <div class="grid p-fluid">
+    <div class="col-12">
+      <h5>Pokemos</h5>
+      <p>El total de pokemones encontrados es de: {{dataResult.count}}</p>
+    </div>
+  </div>
+  <div class="grid p-fluid mt-2">
+    <div class="card col-3" *ngFor="let pokemon of dataResult.results" style="cursor: pointer;" (click)="verInfoPokemon(pokemon.name)">
+      <div class="pokebola">
+        <div class="pokebola-botao"></div>
+      </div>
+      <p>{{pokemon.name}}</p>
+    </div>
+  </div>
+</div>

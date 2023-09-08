@@ -1,0 +1,71 @@
+<p-tabView>
+  <p-tabPanel header="@Output() @Input()">
+    <div class="card -mt-2" style="border-radius: 20px;">
+      <div class="grid p-fluid -mt-3 -mb-3">
+        <div class="col-12">
+          <h5>Componente Padre Sumar</h5>
+        </div>
+      </div>
+      <div class="grid p-fluid">
+        <div class="col-6">
+          <label for="">Número 1</label>
+          <input type="number" pInputText #numeroUnoIn="ngModel" [(ngModel)]="numeroUno" required>
+        </div>
+        <div class="col-6">
+          <label for="">Número 2</label>
+          <input type="number" pInputText #numeroDosIn="ngModel" [(ngModel)]="numeroDos" required>
+        </div>
+        <div class="col-12">
+          <label for="">Suma</label>
+          <input type="number" pInputText #sumaIn="ngModel" [(ngModel)]="suma" disabled>
+        </div>
+        <div class="col-12">
+          <button pButton label="Sumar" (click)="realizarSuma()"></button>
+        </div>
+        <div class="col-12">
+          <label for="">Edad</label>
+          <input type="number" pInputText #edadIn="ngModel" [(ngModel)]="edad" required>
+        </div>
+        <div class="col-12">
+          <app-hijo 
+            [sumaInput]="suma" 
+            [edadHijoInput]="edad"
+            (sumaOutput)="suma = $event"
+            (edadHijoOutput)="edad = $event"></app-hijo>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+  <p-tabPanel header="Signals signal()">
+    <div class="card -mt-2" style="border-radius: 20px;">
+      <div class="grid p-fluid -mt-3 -mb-3">
+        <div class="col-12">
+          <h5>Componente Padre</h5>
+        </div>
+      </div>
+      <div class="grid p-fluid">
+        <div class="col-6">
+          <label for="">Número 1</label>
+          <input type="number" pInputText #numeroUnoIn="ngModel" [(ngModel)]="numeroUnoS" required>
+        </div>
+        <div class="col-6">
+          <label for="">Número 2</label>
+          <input type="number" pInputText #numeroDosIn="ngModel" [(ngModel)]="numeroDosS" required>
+        </div>
+        <div class="col-12">
+          <label for="">Suma</label>
+          <p>{{ signalSuma() }}</p>
+        </div>
+        <div class="col-12">
+          <button pButton label="Sumar" (click)="realizarSumaSignal()"></button>
+        </div>
+        <div class="col-12">
+          <app-hijo-signal></app-hijo-signal>
+        </div>
+      </div>
+    </div>
+  </p-tabPanel>
+</p-tabView>
+
+
+

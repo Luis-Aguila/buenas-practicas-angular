@@ -1,0 +1,28 @@
+<div class="card -mt-2" style="border-radius: 20px;">
+  <div class="grid p-fluid -mt-3 -mb-3">
+    <div class="col-12">
+      <h5>Componente Hijo</h5>
+    </div>
+  </div>
+  <div class="grid p-fluid">
+    <div class="col-6">
+      <label for="">valor Recibido (del padre)</label>
+      <p>{{ signalSuma() }}</p>
+      <!-- <input type="number" pInputText #numeroUnoIn="ngModel" [(ngModel)]="sumaInput" required (keyup)="actualizarValorPadre()"> -->
+    </div>
+    <div class="col-6">
+      <label for="">multiplicar por</label>
+      <input type="number" pInputText #numeroDosIn="ngModel" [(ngModel)]="multiplicarPor" required>
+    </div>
+    <div class="col-12">
+      <label for="">Producto</label>
+      <input type="number" pInputText #sumaIn="ngModel" [(ngModel)]="producto" disabled>
+    </div>
+    <div class="col-12">
+      <button pButton label="Multiplicar" (click)="realizarMultiplicacion()"></button>
+    </div>
+    <div class="col-12">
+      <app-nieto-signal></app-nieto-signal>
+    </div>
+  </div>
+</div>

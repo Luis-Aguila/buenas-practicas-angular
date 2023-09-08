@@ -1,0 +1,2035 @@
+<!-- <h1>Hola {{ saludoBienvenida }}</h1>
+<br>
+<h3>Rut Variable: {{ rutUser }}</h3>
+<h3 *ngIf="fs.validarRut(rutUser)">Rut Pipe: El rut {{ rutUser | rut }}, es válido!!</h3>
+<h3 *ngIf="!fs.validarRut(rutUser)">El rut {{ rutUser }}, es inválido!!</h3>
+<br>
+<ul>
+  <li *ngFor="let color of formApi.paletaColor">{{ color }}</li>
+</ul> -->
+<div class="card">
+  <p-menubar [model]="menubarItems">
+      <ng-template pTemplate="start">
+          <i class="pi pi-apple"></i>
+      </ng-template>
+      <ng-template pTemplate="end">
+          <span>{{ horaLocal | date: 'dd-MM-yyyy HH:mm:ss' }}</span>
+      </ng-template>
+  </p-menubar>
+  <div class="dock-window dock-advanced">
+
+    <div [style.display]="itemMenuVisible === 1 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Definición de Angular</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Definición</h5>
+              <p>
+                Angular es un framework de código abierto basado en JavaScript que se utiliza para 
+                desarrollar aplicaciones web de una sola página (SPA) y aplicaciones web dinámicas. 
+                Angular facilita la creación de aplicaciones altamente interactivas y robustas al 
+                proporcionar una estructura organizada y herramientas poderosas para desarrolladores.
+              </p>
+            </div>
+            
+            <div class="col-12 md:col-6 lg:col-6">
+              <h5>Enfoque</h5>
+              <p>
+                Angular se centra en la creación de aplicaciones web del lado del cliente y utiliza el 
+                patrón de diseño Modelo-Vista-Controlador (MVC) para organizar el código. 
+                El enfoque de Angular se basa en los siguientes conceptos clave:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Componentes: </strong>
+                    Angular divide la interfaz de usuario en componentes reutilizables y autónomos. 
+                    Cada componente controla una parte específica de la interfaz de usuario y tiene su propia lógica y plantilla.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Directivas: </strong>
+                    Angular proporciona directivas que extienden el HTML con comportamientos personalizados. Esto permite crear interfaces de usuario dinámicas y reactivas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Inyección de dependencias: </strong>
+                    Angular utiliza un sistema de inyección de dependencias para gestionar las dependencias y facilitar la modularidad y la reutilización del código.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Enlace de datos: </strong>
+                    Angular ofrece enlace de datos bidireccional, lo que significa que los cambios en el modelo de datos se reflejan automáticamente en la vista y viceversa, 
+                    sin necesidad de escribir código de actualización manualmente.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Rutas: </strong>
+                    Angular permite el enrutamiento para gestionar la navegación dentro de una aplicación SPA, lo que facilita la creación de 
+                    aplicaciones con varias vistas y URL amigables para el usuario.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6" style="text-align: center;">
+              <img src="../../../../assets/images/definicion_angular.png" alt="" style="width: 100%;">
+            </div>
+            <div class="col-12">
+              <h5>Ventajas</h5>
+              <p>
+                Las ventajas de utilizar Angular incluyen:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Productividad: </strong>
+                    Angular proporciona una estructura y un conjunto de herramientas que aceleran el desarrollo de 
+                    aplicaciones web, lo que permite a los desarrolladores ser más productivos.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Mantenimiento: </strong>
+                    La modularidad de Angular y la separación clara de responsabilidades facilitan el mantenimiento y la escalabilidad de las aplicaciones a medida que crecen.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Rendimiento: </strong>
+                    Angular utiliza una técnica llamada "detección de cambios" para optimizar el rendimiento de las aplicaciones al actualizar solo las partes necesarias de la interfaz de usuario.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Comunidad y soporte: </strong>
+                    Angular tiene una comunidad activa y una amplia base de usuarios, lo que significa que puedes encontrar una gran cantidad de recursos, bibliotecas y soluciones en línea.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Pruebas: </strong>
+                    Angular se diseñó pensando en la prueba, lo que facilita la escritura de pruebas unitarias y de integración para garantizar la calidad del código.
+                  </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 2 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Ciclo de vida de Angular</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Ciclos de vida</h5>
+              <p>
+                En Angular, los ciclos de vida se refieren a una serie de eventos que ocurren durante el ciclo de vida de un componente. 
+                Estos eventos permiten que el componente reaccione y realice tareas específicas en diferentes momentos de su existencia y 
+                permiten que los componentes respondan de manera específica a diferentes momentos en su vida útil, lo que facilita la gestión 
+                de recursos y la lógica de la aplicación.
+              </p>
+              <p>
+                Cada uno de estos eventos puede implementarse en un componente Angular mediante la implementación de métodos específicos 
+                con los nombres respectivos de cada evento.
+              </p>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6">
+              <ul>
+                <li>
+                  <p>
+                    <strong>ngOnChanges: </strong>
+                    Este evento se dispara cuando se detectan cambios en las propiedades de entrada (input properties) de un componente. 
+                    Puedes utilizarlo para realizar acciones cuando los valores de entrada cambian.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngOnInit: </strong>
+                    Se ejecuta una vez, justo después de que Angular haya inicializado el componente y establecido sus propiedades. 
+                    Es común realizar inicializaciones en este evento.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngDoCheck: </strong>
+                    Se dispara en cada detección de cambios en la aplicación y permite realizar tareas de detección de cambios personalizadas. 
+                    Puedes usarlo para optimizar el rendimiento o realizar acciones específicas cuando se producen cambios.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngAfterContentInit: </strong>
+                    Se ejecuta después de que Angular haya proyectado el contenido del componente en el DOM (Document Object Model). 
+                    Es útil cuando necesitas trabajar con contenido proyectado.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngAfterContentChecked: </strong>
+                    Se dispara después de que Angular haya comprobado si el contenido proyectado ha cambiado. 
+                    Puedes utilizarlo para realizar acciones adicionales después de la verificación de contenido.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngAfterViewInit: </strong>
+                    Se ejecuta después de que Angular haya inicializado las vistas del componente y las haya renderizado en el DOM. 
+                    Es adecuado para realizar operaciones de manipulación del DOM.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngAfterViewChecked: </strong>
+                    Se dispara después de que Angular haya comprobado si las vistas del componente han cambiado. 
+                    Puedes usarlo para realizar acciones adicionales después de la verificación de vistas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngOnDestroy: </strong>
+                    Se ejecuta justo antes de que Angular destruya el componente. 
+                    Puedes utilizarlo para limpiar recursos, cancelar suscripciones y liberar memoria.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6" style="text-align: center;">
+              <img src="../../../../assets/images/ciclovida_angular.jpg" alt="" style="width: 100%;">
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 3 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Directivas de Angular</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Directivas de Angular</h5>
+              <p>
+                Las directivas en Angular son instrucciones que se aplican al DOM para modificar su estructura, comportamiento o apariencia. 
+                Estas instrucciones se utilizan para extender el HTML y permiten agregar lógica dinámica y funcionalidad a los elementos 
+                HTML de una manera declarativa.
+              </p>
+              <p>
+                Aquí hay una lista de algunas de las directivas más comunes en Angular:
+              </p>
+            </div>
+            <div class="col-12">
+              <ul>
+                <li>
+                  <p>
+                    <strong>ngIf: </strong>
+                    Esta directiva condicional muestra u oculta elementos en función de una expresión evaluada. 
+                    Por ejemplo, puedes usar ngIf para mostrar un elemento solo si se cumple una condición específica.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngFor: </strong>
+                    La directiva ngFor se utiliza para iterar sobre una colección de elementos, como una matriz o 
+                    una lista, y generar elementos HTML repetitivos basados en la colección.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngSwitch y ngSwitchCase: </strong>
+                    Estas directivas se utilizan para crear estructuras de control de conmutación (switch-case) en la plantilla HTML, 
+                    lo que permite mostrar diferentes elementos o contenido en función de múltiples condiciones.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngStyle: </strong>
+                    Esta directiva permite aplicar estilos CSS dinámicamente a elementos basados en propiedades del componente.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngClass: </strong>
+                    ngClass se usa para agregar o quitar clases CSS de elementos HTML en función de condiciones específicas en el componente.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngModel: </strong>
+                    La directiva ngModel se usa para enlazar datos de un elemento de entrada (input) a una propiedad del componente, 
+                    lo que permite la comunicación bidireccional entre la vista y el componente.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngSubmit: </strong>
+                    Esta directiva se utiliza en formularios para manejar la presentación del formulario cuando se envía, normalmente vinculándola a una función del componente.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngTemplateOutlet: </strong>
+                    Permite la inclusión dinámica de plantillas en la vista, lo que es útil para la creación de componentes reutilizables.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>ngDisabled, ngReadOnly, ngValue, etc.: </strong>
+                    Hay muchas otras directivas que pueden aplicarse a elementos HTML para controlar su estado, valor y comportamiento.
+                  </p>
+                </li>
+              </ul>
+              <p>
+                Estas son solo algunas de las directivas incorporadas en Angular. Además, Angular permite crear directivas personalizadas para abordar necesidades específicas en tu aplicación. 
+                Las directivas son una parte esencial de la programación Angular y permiten la creación de interfaces de usuario dinámicas y altamente interactivas.
+              </p>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 4 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Decoradores de Angular</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Decoradores de Angular</h5>
+              <p>
+                Los decoradores en Angular son funciones especiales que se utilizan para modificar clases, métodos, propiedades y otros elementos 
+                en tiempo de compilación. Los decoradores se indican con el símbolo @ seguido del nombre del decorador y se colocan justo antes del 
+                elemento que se desea decorar.
+              </p>
+              <p>
+                Angular utiliza decoradores para configurar y extender diversas partes de una aplicación Angular, como componentes, servicios, módulos, inyección de dependencias y más. 
+                A continuación, enumero algunos de los decoradores más comunes en Angular:
+              </p>
+            </div>
+            <div class="col-12">
+              <ul>
+                <li>
+                  <p>
+                    <strong>@Component: </strong>
+                    Este decorador se utiliza para definir y configurar un componente de Angular. 
+                    Se coloca encima de la clase de componente y especifica información como la plantilla, los estilos, 
+                    las propiedades de entrada y salida, entre otros.
+                  </p>
+<pre><code class="language-typescript">
+@Component(&#123;
+  selector: 'app-mi-componente',
+  templateUrl: './mi-componente.component.html',
+  styleUrls: ['./mi-componente.component.css']
+&#125;)
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>@Directive: </strong>
+                    Se usa para definir y configurar una directiva personalizada en Angular. 
+                    Las directivas personalizadas permiten extender el comportamiento de los elementos DOM en una aplicación Angular.
+                  </p>
+<pre><code class="language-typescript">
+@Directive(&#123;
+  selector: '[appMiDirectiva]'
+&#125;)
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>@Injectable: </strong>
+                    Este decorador se utiliza para marcar una clase como un servicio inyectable. 
+                    Angular usa esta información para proporcionar instancias de servicios cuando se les inyecta en componentes u otros servicios.
+                  </p>
+<pre><code class="language-typescript">
+@Injectable()
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>@NgModule: </strong>
+                    Se utiliza para definir y configurar un módulo de Angular. Los módulos son contenedores para componentes, directivas, servicios y otros elementos de la aplicación.
+                  </p>
+<pre><code class="language-typescript">
+@NgModule(&#123;
+  declarations: [AppComponent, MiComponente],
+  imports: [RouterModule.forRoot(routes)],
+  providers: [MiServicio],
+  bootstrap: [AppComponent]
+&#125;)
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>@Input: </strong>
+                    Este decorador se utiliza para declarar propiedades de entrada en un componente. 
+                    Permite que el componente reciba datos de su componente padre a través de enlace de datos.
+                  </p>
+<pre><code class="language-typescript">
+@Input() miPropiedad: string;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>@Output: </strong>
+                    Se usa para declarar propiedades de salida en un componente. Permite que el componente emita eventos que pueden ser escuchados por el componente padre.
+                  </p>
+<pre><code class="language-typescript">
+@Output() miEvento = new EventEmitter&lt;string&gt;();
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>@ViewChild y @ViewChildren: </strong>
+                    Estos decoradores se utilizan para obtener referencias a elementos DOM en la vista del componente. @ViewChild permite 
+                    obtener una referencia a un solo elemento, mientras que @ViewChildren permite obtener referencias a múltiples elementos.
+                  </p>
+<pre><code class="language-typescript">
+@ViewChild('miElemento') elemento: ElementRef;
+@ViewChildren('items') elementos: QueryList&lt;ElementRef&gt;;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>@HostListener: </strong>
+                    Este decorador se utiliza para escuchar eventos en el elemento hospedador (host) del componente. Permite que el componente responda a eventos del DOM.
+                  </p>
+<pre><code class="language-typescript">
+@HostListener('click', ['$event']) onClick(event: Event) &#123;
+  // Manejar el evento de clic
+&#125;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>@HostBinding: </strong>
+                    Se utiliza para enlazar propiedades del elemento hospedador del componente. Esto permite que el componente actualice propiedades del elemento DOM.
+                  </p>
+<pre><code class="language-typescript">
+@HostBinding('style.backgroundColor') backgroundColor: string;
+</code></pre>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 5 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Archivos Principales de Angular</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Archivos Principales de Angular</h5>
+              <p>
+                Un proyecto en Angular consta de varios archivos y directorios principales que son esenciales para su funcionamiento.
+              </p>
+              <p>
+                Aquí tienes una lista de los archivos y directorios más importantes en un proyecto típico de Angular.
+              </p>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6">
+              <ul>
+                <li>
+                  <p>
+                    <strong>src/: </strong>
+                    Este directorio es el corazón de tu proyecto Angular y contiene la mayoría de los archivos fuente de tu aplicación. 
+                    Algunos de los archivos y subdirectorios clave en src/ son:
+                  </p>
+                  <ul>
+                    <li>
+                      <p>
+                        <strong>app/: </strong>
+                        Contiene los componentes, módulos, servicios y otros elementos específicos de tu aplicación.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>assets/: </strong>
+                        Aquí puedes colocar archivos estáticos como imágenes, estilos CSS, archivos JSON, etc., que se incluirán en la construcción de la aplicación.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>index.html: </strong>
+                        El archivo HTML principal de tu aplicación Angular, que actúa como punto de entrada para la carga de la aplicación.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>main.ts: </strong>
+                        El archivo TypeScript principal que inicia la aplicación Angular.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>styles.css/scss: </strong>
+                        El archivo CSS global que se aplica a toda la aplicación por defecto.
+                      </p>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <p>
+                    <strong>angular.json: </strong>
+                    Este archivo de configuración define la estructura del proyecto, las dependencias, 
+                    los scripts de construcción, y más. Es esencial para configurar y personalizar tu aplicación Angular.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>package.json y package-lock.json: </strong>
+                    Estos archivos definen las dependencias del proyecto y sus versiones. Puedes utilizarlos para instalar 
+                    bibliotecas externas, scripts de construcción y herramientas de desarrollo.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>tsconfig.json: </strong>
+                    Este archivo de configuración de TypeScript define cómo se compila el código TypeScript en JavaScript. 
+                    Contiene configuraciones relacionadas con la compilación, la resolución de módulos y otros ajustes de TypeScript.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>node_modules: </strong>
+                    Este directorio contiene las bibliotecas y dependencias de Node.js que utiliza tu proyecto. Se crea automáticamente cuando instalas las dependencias con npm.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6" style="text-align: center;">
+              <img src="../../../../assets/images/archivos_carpetas_angular.png" alt="" style="width: 100%;">
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 6 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>ng generate en Angular</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>ng generate en Angular</h5>
+              <p>
+                El comando ng generate en Angular, también conocido como <strong class="recalcar-palabra">ng g (ng generate)</strong>, es una potente herramienta proporcionada 
+                por Angular CLI (Command Line Interface) que te permite generar automáticamente diversos artefactos en tu proyecto Angular.
+              </p>
+              <p>
+                Aquí están algunas de las cosas que puedes generar con este comando:
+              </p>
+            </div>
+            <div class="col-12">
+              <ul>
+                <li>
+                  <p>
+                    <strong>Componentes: </strong>
+                    Puedes generar componentes Angular utilizando el comando <strong class="recalcar-palabra">ng generate component</strong> o <strong class="recalcar-palabra">ng g c</strong>. 
+                    Esto crea archivos relacionados con un componente, como archivos TypeScript, HTML, CSS y una entrada en 
+                    el módulo de la aplicación.
+                  </p>
+<pre><code class="language-typescript">
+ng generate component mi-componente
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Directivas: </strong>
+                    Para generar una directiva personalizada, puedes usar el comando <strong class="recalcar-palabra">ng generate directive</strong> o <strong class="recalcar-palabra">ng g d</strong>. 
+                    Esto crea archivos relacionados con la directiva en el directorio correcto.
+                  </p>
+<pre><code class="language-typescript">
+ng generate directive mi-directiva
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Pipes: </strong>
+                    Puedes generar pipes personalizados con el comando <strong class="recalcar-palabra">ng generate pipe</strong> o <strong class="recalcar-palabra">ng g p</strong>. 
+                    Esto crea archivos relacionados con el pipe y lo declara en el módulo de la aplicación.
+                  </p>
+<pre><code class="language-typescript">
+ng generate pipe mi-pipe
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Servicios: </strong>
+                    Para generar un servicio en Angular, puedes usar el comando <strong class="recalcar-palabra">ng generate service</strong> o <strong class="recalcar-palabra">ng g s</strong>. 
+                    Esto crea un archivo TypeScript para el servicio y lo declara en el módulo de la aplicación.
+                  </p>
+<pre><code class="language-typescript">
+ng generate service mi-servicio
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Módulos: </strong>
+                    Puedes generar módulos personalizados utilizando el comando <strong class="recalcar-palabra">ng generate module</strong> o <strong class="recalcar-palabra">ng g m</strong>. 
+                    Esto crea un archivo TypeScript para el módulo y, opcionalmente, puede agregar componentes, directivas y otros artefactos relacionados.
+                  </p>
+<pre><code class="language-typescript">
+ng generate module mi-modulo
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Guardias de Rutas: </strong>
+                    Para generar una guardia de rutas, puedes usar el comando <strong class="recalcar-palabra">ng generate guard</strong> o <strong class="recalcar-palabra">ng g g</strong>. 
+                    Esto crea un archivo TypeScript para la guardia de rutas y lo declara en el módulo de la aplicación.
+                  </p>
+<pre><code class="language-typescript">
+ng generate guard mi-guardia
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Clases: </strong>
+                    Puedes generar clases TypeScript utilizando el comando <strong class="recalcar-palabra">ng generate class</strong> o <strong class="recalcar-palabra">ng g cl</strong>. 
+                    Esto crea un archivo TypeScript para la clase con las propiedades y métodos que especifiques.
+                  </p>
+<pre><code class="language-typescript">
+ng generate class mi-clase
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Interfaz: </strong>
+                    Para generar una interfaz TypeScript, puedes usar el comando <strong class="recalcar-palabra">ng generate interface</strong> o <strong class="recalcar-palabra">ng g i</strong>. 
+                    Esto crea un archivo TypeScript para la interfaz con las definiciones de propiedades y métodos.
+                  </p>
+<pre><code class="language-typescript">
+ng generate interface mi-interfaz
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Enum: </strong>
+                    Puedes generar un enum TypeScript utilizando el comando <strong class="recalcar-palabra">ng generate enum</strong> o <strong class="recalcar-palabra">ng g e</strong>. 
+                    Esto crea un archivo TypeScript para el enum con los valores enumerados que especifiques.
+                  </p>
+<pre><code class="language-typescript">
+ng generate enum mi-enum
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Módulos de Routing: </strong>
+                    Para generar un módulo de routing, puedes usar el comando <strong class="recalcar-palabra">ng generate module</strong> con la opción 
+                    <strong class="recalcar-palabra">--routing</strong> o <strong class="recalcar-palabra">ng g m</strong> con la opción <strong class="recalcar-palabra">--routing</strong>.
+                    Esto crea un módulo de routing con archivos relacionados para gestionar las rutas de tu aplicación.
+                  </p>
+<pre><code class="language-typescript">
+ng generate module mi-modulo-de-routing --routing
+</code></pre>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 7 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Buenas Prácticas en Estructuras de carpetas</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Buenas Prácticas en Estructuras de carpetas</h5>
+              <p>
+                Angular posee un sistema de carpetas, el cual corresponde a la estructura base de un proyecto simple, pero 
+                a medida de que nuestro proyecto crece, debemos de ser capaz de evitar el desorden en nuestro proyecto para que de esta manera 
+                podamos estandarizar rutas de manera sencilla y que nuestro proyecto sea mucho más ordenado e instuitivo para los desarrolladores 
+                que se uniran a nuestro proyecto.
+              </p>
+              <p>
+                En este apartado, explicaremos como manejaremos la estructura de todos aquellos componentes, servicios, interfaces, páginas, etc. que 
+                creemos en nuestros proyectos basados en angular. Dentro de la carpeta <strong class="recalcar-palabra">app/</strong>, crearemos 3 carpetas 
+                llamadas: <strong class="recalcar-palabra">pages</strong>, <strong class="recalcar-palabra">providers</strong> y <strong class="recalcar-palabra">shared</strong>.
+              </p>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6">
+              <ul>
+                <li>
+                  <p>
+                    <strong>pages/: </strong>
+                    En esta carpeta dividiremos en sub-carpetas todos los componentes que serán páginas y que serán declaradas en nuestros módulos de rutas por ejemplo: 
+                  </p>
+                  <p>
+                    Crearemos una carpeta llamada home, en esta carpeta crearemos 2 módulos, uno normal y otra de rutas. Posterior a esto crearemos nuestro primer componente 
+                    llamado <strong class="recalcar-palabra">home</strong>, este componente se importará de manera automática al módulo que hemos creado anteriormente y deberá ser 
+                    declararla tambien al módulo de rutas de nuestra carpeta raiz llamada <strong class="recalcar-palabra">home/</strong>, si necesitamos componentes hijos, 
+                    debemos de declararla solamente en el módulo de la carpeta raiz <strong class="recalcar-palabra">home/</strong>, pero no corresponderá a una ruta. 
+                    Si nuestra página posee más de una ruta, el componente deberá de ser declarada tanto en el módulo principal de la carpeta y en el módulo de rutas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>providers/: </strong>
+                    En esta carpeta estaran todos aquellos proveedores para el uso y manejo de datos de nuestro proyecto, entre nos encontraremos con las siguientes subscarpetas, 
+                    la cual nos permitiran dividir todos aquellos archivos y centralizar estos mismos.
+                  </p>
+                  <ul>
+                    <li>
+                      <p>
+                        <strong>guards/: </strong>
+                        En esta subcarpeta se encontrarán todos nuestros guardianes.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>interceptors/: </strong>
+                        En esta subcarpeta se encontrarán todos nuestros interceptor.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>interfaces/: </strong>
+                        En esta subcarpeta se encontrarán todas nuestras interfaces.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>models/: </strong>
+                        En esta subcarpeta se encontrarán todos nuestros modelos y clases.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>pipes/: </strong>
+                        En esta subcarpeta se encontrarán todos nuestros pipes.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>services/: </strong>
+                        En esta subcarpeta se encontrarán todos nuestros servicios.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>signals/: </strong>
+                        En esta subcarpeta se encontrarán todos nuestros signals.
+                      </p>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <p>
+                    <strong>shared/: </strong>
+                    En esta carpeta se encontrarán todos aquellos componentes compartidos y módulos, por lo que la subdividiremos en 2 carpetas las cuales seran: 
+                    <strong class="recalcar-palabra">components/</strong> y <strong class="recalcar-palabra">modules/</strong>. Tambien dentro de esta carpeta, crearemos un 
+                    módulo llamado <strong class="recalcar-palabra">shared.module.ts</strong>, en este módulo importaremos y expotaremos todos los componentes y módulos de uso 
+                    compartidos provenientes de las carpetas <strong class="recalcar-palabra">shared/components/</strong> y <strong class="recalcar-palabra">shared/modules/</strong>.
+                  </p>
+                  <ul>
+                    <li>
+                      <p>
+                        <strong>components/: </strong>
+                        Carpeta en donde almacenaremos los componentes compartidos que utilizaremos en nuestro proyecto.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>modules/: </strong>
+                        En esta carpeta encontraremos 3 módulos, los cuales deberán de ser importados en el archivo <strong class="recalcar-palabra">shared.module.ts</strong>, 
+                        cada uno de estos módulos estan separados para una mayor división los cuales son: 
+                      </p>
+                      <ul>
+                        <li>
+                          <p>
+                            <strong>angular.module.ts: </strong>
+                            En este archivo importaremos y exportaremos todas las dependencias de angular que nuestro proyecto necesitará.
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>externos.module.ts: </strong>
+                            En este archivo importaremos y exportaremos todas las librerias externas que instalemos y que nuestro proyecto necesitará.
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <strong>primeng.module.ts: </strong>
+                            En este archivo importaremos y exportaremos todas las dependencias de primeng que nuestro proyecto necesitará.
+                          </p>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>shared.module.ts: </strong>
+                        En este archivo importaremos y exportaremos los módulos <strong>angular.module.ts</strong>, <strong>externos.module.ts</strong>, <strong>primeng.module.ts</strong> y 
+                        ademas los componentes compartidos que creemos.
+                      </p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12 md:col-6 lg:col-6" style="text-align: center;">
+              <img src="../../../../assets/images/estructura_carpeta_proyecto.png" alt="" style="width: 100%;">
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 8 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Buenas Prácticas en Funciones y Variables</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Buenas Prácticas en Funciones y Variables</h5>
+              <p>
+                En Angular, las funciones y variables se definen en TypeScript, que es un superset de JavaScript con tipado estático opcional. 
+                Esto significa que puedes optar por agregar tipos a tus variables y funciones o no, pero se recomienda encarecidamente tipar todo 
+                en Angular por varias razones:
+              </p>
+            </div>
+            <div class="col-12">
+              <ul>
+                <li>
+                  <p>
+                    <strong>Mejora la Legibilidad y Mantenibilidad del Código: </strong>
+                    Los tipos proporcionan información explícita sobre el tipo de datos que una variable o función espera o devuelve. 
+                    Esto hace que el código sea más legible y facilita su mantenimiento, especialmente en proyectos grandes.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Detección Temprana de Errores: </strong>
+                    El tipado estático de TypeScript permite detectar errores en tiempo de compilación en lugar de en tiempo de ejecución. 
+                    Esto significa que los errores, como llamar a una función con argumentos incorrectos, se detectan antes de que se ejecute la aplicación.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Intellisense y Autocompletado: </strong>
+                    Los IDE (Entornos de Desarrollo Integrados) que admiten TypeScript ofrecen características como Intellisense y autocompletado que facilitan 
+                    la escritura de código, ya que proporcionan sugerencias basadas en tipos.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Refactorización Segura: </strong>
+                    Cuando cambias nombres de variables o funciones, el tipado ayuda a garantizar que todos los usos de esas variables o funciones se actualicen correctamente.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Documentación Integrada: </strong>
+                    Los tipos proporcionan documentación integrada en el código, lo que facilita la comprensión de cómo se deben usar las variables y funciones.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Mayor Claridad: </strong>
+                    Al tipar todo en Angular, se brinda una comprensión más clara de la estructura de datos y la lógica del programa, lo que es especialmente 
+                    beneficioso cuando varios desarrolladores trabajan en el mismo proyecto.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <h5>Buenas Prácticas en Funciones</h5>
+              <p>
+                Escribir funciones en Angular siguiendo buenas prácticas es fundamental para mantener un código limpio, mantenible y eficiente. A continuación, 
+                te menciono algunas buenas prácticas que debes tener en cuenta al escribir funciones en Angular:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Nombres Significativos: </strong>
+                    Usa nombres descriptivos y significativos para tus funciones. Esto facilita la comprensión de lo que hace la función.
+                  </p>
+<pre><code class="language-typescript">
+// Buena práctica
+function calcularTotalFactura() &#123;
+  // ...
+&#125;
+
+// Evitar
+function calcular() &#123;
+  // ...
+&#125;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Funciones Pequeñas y Especializadas: </strong>
+                    Divide funciones largas y complejas en funciones más pequeñas y especializadas. Cada función debe hacer una tarea específica y no debe ser demasiado extensa.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Documentación: </strong>
+                    Proporciona comentarios y documentación adecuada para tus funciones. Esto ayuda a otros desarrolladores a entender su propósito y cómo deben usarlas.
+                  </p>
+<pre><code class="language-typescript">
+/**
+* Calcula el total de una factura.
+* @param &#123;number&#125; subTotal - El subtotal de la factura.
+* @param &#123;number&#125; impuestos - El monto de impuestos.
+* @returns &#123;number&#125; El total de la factura.
+*/
+function calcularTotalFactura(subTotal: number, impuestos: number): number &#123;
+  // ...
+&#125;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Evitar Funciones Largas: </strong>
+                    Las funciones largas son difíciles de mantener y entender. Trata de mantener tus funciones lo más cortas 
+                    posible y siguiendo el principio de responsabilidad única.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>No Repetir Código (DRY): </strong>
+                    Evita la duplicación de código escribiendo funciones reutilizables y factorizando código común en funciones separadas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Usar Tipos de Parámetros: </strong>
+                    Utiliza TypeScript para tipar los parámetros y el valor de retorno de tus funciones. Esto proporciona información 
+                    sobre el tipo de datos esperados y facilita la detección de errores.
+                  </p>
+<pre><code class="language-typescript">
+function suma(a: number, b: number): number &#123;
+  return a + b;
+&#125;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Evitar Efectos Secundarios: </strong>
+                    Las funciones deben ser puras en la medida de lo posible, lo que significa que no deben tener efectos secundarios en 
+                    el estado de la aplicación. Evita modificar variables o estados fuera de la función de manera inesperada.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Manejo de Excepciones: </strong>
+                    Si una función puede lanzar excepciones, maneja esas excepciones de manera adecuada y proporciona mensajes de error descriptivos.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Optimización: </strong>
+                    Si una función es intensiva en términos de recursos (como cálculos costosos), considera la optimización y el rendimiento.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Comentarios de Línea: </strong>
+                    Utiliza comentarios en línea para aclarar el propósito de secciones importantes o partes complejas del código dentro de la función.
+                  </p>
+<pre><code class="language-typescript">
+function calcularTotalFactura(subTotal: number, impuestos: number): number &#123;
+  // Calcula el total sumando el subtotal y los impuestos.
+  const total = subTotal + impuestos;
+  return total;
+&#125;
+</code></pre>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <h5>Buenas Prácticas en Variables</h5>
+              <p>
+                Escribir funciones en Angular siguiendo buenas prácticas es fundamental para mantener un código limpio, mantenible y eficiente. A continuación, 
+                te menciono algunas buenas prácticas que debes tener en cuenta al escribir funciones en Angular:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Nombres Descriptivos: </strong>
+                    Elige nombres significativos y descriptivos para tus variables. Un nombre bien elegido comunica de manera clara el propósito y la función de la variable.
+                  </p>
+<pre><code class="language-typescript">
+// Buena práctica
+const totalFactura: number = calcularTotal(subTotal, impuestos);
+
+// Evitar
+const tf = calcularT(sub, imp);
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Usa Constantes para Valores Inmutables: </strong>
+                    Si tienes valores que no cambiarán durante la ejecución de tu aplicación, decláralos como constantes utilizando <strong class="recalcar-palabra">const</strong>, 
+                    tambien puedes declarar variables como <strong class="recalcar-palabra">readonly</strong>.
+                    Esto hace que el código sea más legible y ayuda al rendimiento.
+                  </p>
+<pre><code class="language-typescript">
+const tasaIVA: number = 0.16; // Valor inmutable
+readonly urlApi: string = "www.urlapi.cl/apirest/"; // Valor inmutable
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Tipado de Variables: </strong>
+                    Utiliza TypeScript para agregar tipos a tus variables siempre que sea posible. 
+                    Los tipos proporcionan información útil y previenen errores en tiempo de ejecución.
+                  </p>
+<pre><code class="language-typescript">
+nombrePage: string = "Login Usuario";
+usuarioActivado: boolean = true;
+
+const nombre: string = "Juan";
+const edad: number = 30;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Ámbito de Variables (Scope): </strong>
+                    Limita el ámbito de tus variables tanto como sea posible. 
+                    Evita la creación de variables globales y utiliza <strong class="recalcar-palabra">let</strong> o <strong class="recalcar-palabra">const</strong> 
+                    dentro de bloques y funciones cuando sea necesario.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Evita Variables No Inicializadas: </strong>
+                    Siempre inicializa tus variables antes de usarlas. Las variables no inicializadas pueden llevar a errores difíciles de depurar.
+                  </p>
+<pre><code class="language-typescript">
+// Buena práctica
+fechaNacimiento: Date = new Date();
+let resultado: number = 0;
+
+// Mala práctica
+fechaNacimiento: Date;
+let resultado: number;
+// Evitar: resultado no tiene un valor definido
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Desestructuración: </strong>
+                    Utiliza la desestructuración para extraer valores de objetos o arreglos en variables individuales. Esto puede hacer que el código sea más legible y conciso.
+                  </p>
+<pre><code class="language-typescript">
+const &#123; nombre, edad &#125; = persona;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Nombre de Variables Consistentes: </strong>
+                    Mantén una convención de nomenclatura coherente en todo tu proyecto para que las variables tengan nombres consistentes y predecibles.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Evita Variables de un Solo Carácter: </strong>
+                    Evita nombrar variables con un solo carácter, a menos que se utilicen en contextos muy específicos como bucles. Los nombres descriptivos son más legibles.
+                  </p>
+<pre><code class="language-typescript">
+// Evitar
+for (let i = 0; i < elementos.length; i++) &#123;
+  // ...
+&#125;
+
+// Buena práctica
+for (let indice = 0; indice < elementos.length; indice++) &#123;
+  // ...
+&#125;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Comentarios Significativos: </strong>
+                    Agrega comentarios cuando sea necesario para explicar el propósito de una variable o su uso especial.
+                  </p>
+<pre><code class="language-typescript">
+const precioProducto: number = 123; // Precio unitario del producto
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Elimina Variables no Utilizadas: </strong>
+                    Mantén tu código limpio eliminando variables que ya no se utilizan. Las herramientas de desarrollo suelen advertir sobre variables no utilizadas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Acceso de variables: </strong>
+                    No es necesario agregar <strong class="recalcar-palabra">public</strong> explícitamente a menos que desees establecer un modificador de acceso diferente, 
+                    como <strong class="recalcar-palabra">private</strong> o <strong class="recalcar-palabra">protected</strong>. 
+                    Estos modificadores se utilizan para controlar la visibilidad y el acceso a las variables dentro de la clase. 
+                    Por defecto, las variables con el modificador <strong class="recalcar-palabra">public</strong> son accesibles desde cualquier parte de la aplicación, pero esto puede cambiar 
+                    si se utilizan otros modificadores como <strong class="recalcar-palabra">private</strong> o <strong class="recalcar-palabra">protected</strong>.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Evita variables con múmeros: </strong>
+                    Los nombres de variables deben ser descriptivos y seguir convenciones de nomenclatura que faciliten la comprensión del código.
+                  </p>
+<pre><code class="language-typescript">
+// Evitar nombres de variables con números
+let datosUsuario2: string; // ¿Qué significa el "2"?
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Evita variables con tipado any: </strong>
+                    El uso excesivo de <strong class="recalcar-palabra">any</strong> puede comprometer algunos de los beneficios clave de TypeScript, como la detección de errores en 
+                    tiempo de compilación y la mejora de la seguridad y el mantenimiento del código. Aquí hay algunas razones por las que se debe evitar <strong class="recalcar-palabra">any</strong>:
+                  </p>
+                  <ul>
+                    <li>
+                      <p>
+                        <strong>Pérdida de Tipado Estático: </strong>
+                        TypeScript se basa en la idea de proporcionar tipado estático para ayudar a los desarrolladores a detectar errores en tiempo de compilación. 
+                        Cuando se usa <strong class="recalcar-palabra">any</strong>, se pierde esta ventaja, ya que una variable de tipo <strong class="recalcar-palabra">any</strong> puede contener cualquier tipo de dato, 
+                        lo que significa que los errores no se detectarán hasta que se ejecute el código.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Falta de Documentación Implícita: </strong>
+                        Cuando se utiliza <strong class="recalcar-palabra">any</strong>, se pierde la documentación implícita que los tipos proporcionan en el código. 
+                        Esto hace que sea más difícil entender cómo se deben usar las variables y puede llevar a confusión.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Mayor Probabilidad de Errores en Tiempo de Ejecución: </strong>
+                        Al permitir cualquier tipo de valor en una variable <strong class="recalcar-palabra">any</strong>, aumenta la probabilidad de que ocurran errores en 
+                        tiempo de ejecución cuando se realizan operaciones incompatibles con el tipo de datos real.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Dificultad en el Mantenimiento: </strong>
+                        El código que utiliza <strong class="recalcar-palabra">any</strong> puede ser más difícil de mantener, ya que es menos explícito sobre los tipos de 
+                        datos esperados. Esto puede causar problemas cuando otros desarrolladores trabajan en el proyecto o cuando se realizan cambios en el código en el futuro.
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Menos Ayuda de Herramientas de Desarrollo: </strong>
+                        Las herramientas de desarrollo, como los IDE, ofrecen características de ayuda basadas en tipos. 
+                        Al usar <strong class="recalcar-palabra">any</strong>, se pierde la ventaja de estas características, como el autocompletado y la validación de tipos.
+                      </p>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 9 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Configuración de Rutas (Álias de Rutas)</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Configuración de Rutas (Álias de Rutas)</h5>
+              <p>
+                El uso de alias de ruta en Angular es una práctica recomendada, ya que simplifica las importaciones y mejora la 
+                organización y la legibilidad del código. Facilita el mantenimiento y la escalabilidad del proyecto, y reduce 
+                la posibilidad de errores relacionados con las rutas relativas. Establecer alias de ruta en Angular proporciona varias ventajas:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Facilita las Importaciones: </strong>
+                    Los alias de ruta permiten importar módulos y archivos utilizando rutas más cortas y legibles en 
+                    lugar de rutas relativas largas. Esto hace que las importaciones sean más claras y concisas.
+                  </p>
+<pre><code class="language-typescript">
+// Sin alias de ruta
+import &#123; FuncionesService &#125; from '../../../providers/services/funciones.service';
+
+// Con alias de ruta
+import &#123; FuncionesService &#125; from '@services/funciones.service';
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Mantiene un Código más Limpio: </strong>
+                    Al utilizar alias de ruta, el código se ve más limpio y evita el uso de rutas 
+                    relativas complejas, lo que mejora la legibilidad y reduce la posibilidad de errores en las rutas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Evita Problemas de Rutas Relativas: </strong>
+                    Evita problemas potenciales relacionados con las rutas relativas, especialmente cuando mueves 
+                    archivos o carpetas en tu proyecto. Los alias de ruta te ayudan a eliminar la necesidad de ajustar rutas relativas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Flexibilidad en la Estructura del Proyecto: </strong>
+                    Los alias de ruta permiten una mayor flexibilidad en la organización de tu proyecto, ya que no estás limitado por la 
+                    ubicación física de los archivos. Puedes reorganizar la estructura de carpetas sin cambiar todas las importaciones.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Mejora la Portabilidad: </strong>
+                    Hace que tu código sea más portable, ya que las dependencias de rutas relativas son específicas de la 
+                    estructura del proyecto. Los alias de ruta ayudan a reducir esta dependencia.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Configuración Personalizada: </strong>
+                    Puedes personalizar los alias de ruta según tus necesidades específicas, lo que te permite definir 
+                    nombres significativos para los directorios o módulos que utilizas con frecuencia.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Integración con Webpack: </strong>
+                    Los alias de ruta son compatibles con Webpack y pueden ser configurados en el archivo <strong class="recalcar-palabra">tsconfig.json</strong>, 
+                    en el apartado de <strong class="recalcar-palabra">paths</strong> de tu proyecto Angular para que Webpack maneje las resoluciones de ruta adecuadamente.
+                  </p>
+                  <img src="../../../../assets/images/alia_rutas.png" alt="" style="width: 100%;">
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 10 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Refactorización</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Refactorización</h5>
+              <p>
+                La Refactorización es el proceso de reestructurar el código fuente existente sin cambiar su comportamiento externo para mejorar su calidad interna. 
+                El objetivo principal de la refactorización es hacer que el código sea más limpio, mantenible, legible y eficiente sin cambiar su funcionalidad. 
+                La refactorización puede abordar varios aspectos del código, como su estructura, nombres de variables, funciones, clases, y la eliminación de 
+                código duplicado o no utilizado.
+              </p>
+              <p>
+                En un proyecto de Angular, la refactorización es una práctica importante y se debe realizar en varios casos:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Mejorar la Legibilidad: </strong>
+                    Cuando el código se vuelve difícil de entender debido a nombres de variables poco descriptivos, estructuras complejas o falta de comentarios. 
+                    La refactorización puede hacer que el código sea más claro y comprensible.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Eliminar Duplicación de Código: </strong>
+                    Si encuentras fragmentos de código duplicados en diferentes partes de tu proyecto, es una señal clara de que puedes refactorizar ese 
+                    código en una función o módulo reutilizable para evitar la duplicación.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Optimizar el Rendimiento: </strong>
+                    Cuando identificas partes del código que son ineficientes en términos de rendimiento, puedes refactorizar esas secciones 
+                    para mejorar la velocidad y la eficiencia de tu aplicación.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Mejorar la Mantenibilidad: </strong>
+                    A medida que el proyecto crece, es común que se vuelva más difícil de mantener. La refactorización puede ayudar a 
+                    mantener el código limpio y estructurado a medida que agregas nuevas características o funcionalidades.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Aplicar Mejores Prácticas: </strong>
+                    A medida que aprendes y evolucionas como desarrollador, es posible que quieras aplicar mejores prácticas o 
+                    patrones de diseño que no se utilizaron inicialmente en el proyecto. 
+                    La refactorización te permite hacerlo de manera controlada.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Preparar para Cambios Futuros: </strong>
+                    Si anticipas cambios en los requisitos o la arquitectura de tu proyecto, puedes refactorizar el código para hacerlo más flexible y adaptable a los cambios futuros.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Mejorar la Escalabilidad: </strong>
+                    Cuando el proyecto necesita crecer y manejar una mayor complejidad, la refactorización puede ayudar a modularizar y organizar el 
+                    código de una manera que facilite la escalabilidad.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Corregir Errores y Problemas: </strong>
+                    Si identificas errores o problemas en el código existente, la refactorización puede ser necesaria para solucionarlos de manera eficaz.
+                  </p>
+                </li>
+              </ul>
+              <p>
+                Es importante tener en cuenta que la refactorización debe llevarse a cabo de manera planificada y controlada. Aquí hay algunas pautas para realizar 
+                refactorizaciones efectivas en un proyecto de Angular:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Realiza Pruebas Unitarias: </strong>
+                    Antes y después de la refactorización, asegúrate de tener pruebas unitarias que verifiquen que la funcionalidad sigue siendo la misma. 
+                    Esto te ayuda a detectar problemas rápidamente.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Utiliza Herramientas y Ayudas: </strong>
+                    Las herramientas de refactorización integradas en los IDE de desarrollo, como Visual Studio Code, pueden ayudarte en el proceso. 
+                    También puedes utilizar linters y analizadores de código estático para identificar áreas que necesitan atención.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Refactoriza Pequeños Pasos: </strong>
+                    No intentes refactorizar todo el proyecto de una vez. Realiza cambios pequeños y verifica que no se rompa la funcionalidad con cada paso.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Mantén un Control de Versiones: </strong>
+                    Utiliza un sistema de control de versiones (como Git) para realizar un seguimiento de los cambios y poder volver atrás si es necesario.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Colabora con el Equipo: </strong>
+                    Comunica tus intenciones de refactorizar con tu equipo y asegúrate de que todos estén en la misma página.
+                  </p>
+                </li>
+              </ul>
+              <p>
+                La refactorización es una práctica continua en el desarrollo de software y puede mejorar significativamente la calidad y 
+                la mantenibilidad de tu proyecto de Angular a lo largo del tiempo.
+              </p>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 11 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Template Forms vs Reactive Forms</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Template Forms vs Reactive Forms</h5>
+              <p>
+                En Angular, existen dos enfoques principales para trabajar con formularios: los Template-driven forms (formularios basados en plantillas) y 
+                los Reactive forms (formularios reactivos). Cada enfoque tiene sus propias características y casos de uso.
+              </p>
+            </div>
+            <div class="col-12">
+              <h5>Template-driven forms (Formularios basados en plantillas)</h5>
+              <p>
+                La lógica está en el HTML.
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Facilidad de Uso: </strong>
+                    Los formularios basados en plantillas son más fáciles de crear y mantener en aplicaciones pequeñas o con formularios simples. 
+                    Son especialmente útiles cuando se necesita implementar formularios de manera rápida y sencilla.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Configuración en la Plantilla HTML: </strong>
+                    La mayoría de la configuración del formulario se realiza directamente en la plantilla HTML utilizando directivas como <strong class="recalcar-palabra">ngModel</strong>. 
+                    Esto significa que la lógica del formulario se encuentra en el archivo HTML.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Validación Declarativa: </strong>
+                    La validación de los datos de entrada se configura mediante directivas de validación en la plantilla HTML. 
+                    Esto puede hacer que la validación sea más fácil de entender y mantener.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Menos Control Programático: </strong>
+                    En los formularios basados en plantillas, se confía en gran medida en Angular para gestionar el estado del formulario y las validaciones. 
+                    Esto significa que puede haber menos control programático directo sobre el formulario.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Bueno para Casos Sencillos: </strong>
+                    Los formularios basados en plantillas son ideales para casos sencillos en los que la lógica del formulario es simple y no se 
+                    requieren muchas validaciones o lógica personalizada.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <h5>Reactive forms (Formularios reactivos)</h5>
+              <p>
+                La lógica está en el componente.
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Mayor Control Programático: </strong>
+                    Los formularios reactivos proporcionan un mayor control programático sobre la lógica del formulario. 
+                    La configuración y la gestión del formulario se realizan principalmente en el código TypeScript.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Flexibilidad: </strong>
+                    Son más flexibles y adecuados para formularios complejos y dinámicos, donde se necesita lógica personalizada y validaciones complejas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Validación Programática: </strong>
+                    La validación se realiza programáticamente en el código TypeScript, lo que brinda un mayor control y la capacidad de 
+                    implementar validaciones personalizadas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Uso de Observables: </strong>
+                    Los formularios reactivos utilizan Observables de RxJS para rastrear y reaccionar a los cambios en los valores del formulario. 
+                    Esto facilita la manipulación de datos asincrónicos y la respuesta a eventos del formulario.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Bueno para Aplicaciones Grandes y Complejas: </strong>
+                    Son ideales para aplicaciones grandes o formularios complejos, donde se requiere un control detallado y una lógica personalizada.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Manejo de Grupos y Arrays de Controles: </strong>
+                    Los formularios reactivos permiten el manejo de grupos de controles y arrays de controles de una manera más eficiente.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <p>
+                En resumen, la elección entre formularios basados en plantillas (Template-driven forms) y formularios reactivos (Reactive forms) 
+                depende de las necesidades específicas de tu aplicación y el tipo de formulario que estás creando. 
+                Para formularios simples y rápidos, los formularios basados en plantillas son adecuados. 
+                Para formularios más complejos y personalizados, los formularios reactivos ofrecen un mayor control y flexibilidad. 
+                En muchos casos, las aplicaciones pueden utilizar ambos enfoques según sea necesario en diferentes partes de la aplicación.
+              </p>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 12 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Template Forms</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Template Forms</h5>
+              <p>
+                Un Template-driven form (formulario basado en plantillas) en Angular es un enfoque para crear formularios en una aplicación Angular utilizando 
+                principalmente la plantilla HTML para definir la estructura y la lógica del formulario. Este enfoque hace un uso extensivo de directivas estructurales 
+                y de formularios proporcionadas por Angular, como <strong class="recalcar-palabra">ngForm</strong>, <strong class="recalcar-palabra">ngModel</strong>, 
+                <strong class="recalcar-palabra">ngSubmit</strong>, y otras, para crear y gestionar el formulario.
+              </p>
+              <p>
+                Aquí hay algunos aspectos clave de los Template forms en Angular:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Plantilla HTML: </strong>
+                    La estructura del formulario se define en la plantilla HTML utilizando elementos HTML tradicionales como 
+                    <strong class="recalcar-palabra">&lt;form&gt;</strong>, <strong class="recalcar-palabra">&lt;input&gt;</strong>, 
+                    <strong class="recalcar-palabra">&lt;select&gt;</strong>, <strong class="recalcar-palabra">&lt;textarea&gt;</strong>, entre otras. 
+                    Las directivas de Angular se utilizan para agregar lógica y comportamiento a estos elementos.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Directiva ngForm: </strong>
+                    Se utiliza la directiva <strong class="recalcar-palabra">NgForm</strong> para envolver el formulario HTML y crear una instancia de <strong class="recalcar-palabra">NgForm</strong>. 
+                    Esto permite el seguimiento de los controles del formulario y la gestión del estado del formulario.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Directiva ngModel: </strong>
+                    La directiva ngModel se utiliza para establecer una vinculación de datos de dos vías entre los elementos de entrada HTML 
+                    (como <strong class="recalcar-palabra">&lt;input&gt;</strong>, <strong class="recalcar-palabra">&lt;select&gt;</strong>, <strong class="recalcar-palabra">&lt;textarea&gt;</strong>, entre otros) y 
+                    las propiedades del modelo en el componente TypeScript. Esto permite que los datos fluyan entre la vista y el componente automáticamente.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Validación Declarativa: </strong>
+                    La validación del formulario se define en la plantilla HTML utilizando directivas de validación como 
+                    <strong class="recalcar-palabra">required</strong>, <strong class="recalcar-palabra">minLength</strong>, <strong class="recalcar-palabra">maxLength</strong>, 
+                    <strong class="recalcar-palabra">pattern</strong>, etc. 
+                    Estas directivas permiten establecer reglas de validación declarativas en los elementos de entrada.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Manejo de Envío: </strong>
+                    Se utiliza la directiva <strong class="recalcar-palabra">ngSubmit</strong> para manejar la acción de envío del formulario. 
+                    Cuando el usuario envía el formulario, se ejecuta una función especificada en el componente TypeScript.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Bueno para Casos Sencillos: </strong>
+                    Los Template-driven forms son ideales para formularios sencillos o cuando se necesita una implementación rápida y sencilla sin mucha lógica personalizada.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Menos Control Programático: </strong>
+                    En este enfoque, gran parte de la lógica del formulario se maneja automáticamente por Angular, 
+                    lo que significa que hay menos necesidad de escribir código TypeScript para el manejo del formulario.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <p>
+                Un ejemplo de un formulario basado en plantillas en Angular podría verse así:
+              </p>
+<pre><code class="language-html">
+&lt;form #miForm="ngForm" (ngSubmit)="enviarDatos()"&gt;
+  &lt;input type="text" name="nombre" [(ngModel)]="modelo.nombre" required&gt;
+  &lt;input type="email" name="correo" [(ngModel)]="modelo.correo" required email&gt;
+  &lt;button type="submit">Enviar&lt;/button&gt;
+&lt;/form&gt;
+</code></pre>
+              <p>
+                En este ejemplo, <strong class="recalcar-palabra">[(ngModel)]</strong> se utiliza para establecer una vinculación de datos de dos vías, 
+                y las directivas de validación como <strong class="recalcar-palabra">required</strong> y <strong class="recalcar-palabra">email</strong> se aplican a los campos de entrada.
+              </p>
+              <p>
+                En resumen, los Template-driven forms son una forma conveniente de crear formularios en Angular, especialmente para formularios simples y rápidos. 
+                Están basados en la manipulación de la plantilla HTML y la utilización de directivas de Angular para definir la estructura y la lógica 
+                del formulario.
+              </p>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 13 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Reactive Forms</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Reactive Forms</h5>
+              <p>
+                Los Reactive Forms (formularios reactivos) en Angular es un enfoque para crear formularios en una aplicación Angular utilizando 
+                principalmente el código TypeScript para definir la estructura y la lógica del formulario. A diferencia de los Template-driven Forms, 
+                donde gran parte de la lógica se coloca en la plantilla HTML, los Reactive Forms se basan en la manipulación programática de formularios y 
+                hacen un uso extensivo de las clases proporcionadas por Angular.
+              </p>
+              <p>
+                Aquí hay algunos aspectos clave de los Reactive Forms en Angular:
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Formulario Control: </strong>
+                    En los Reactive Forms, se crean instancias de formularios como objetos TypeScript utilizando las clases 
+                    <strong class="recalcar-palabra">FormGroup</strong>, <strong class="recalcar-palabra">FormControl</strong>, y <strong class="recalcar-palabra">FormArray</strong>. 
+                    Estos objetos representan la estructura del formulario y sus controles.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Controladores de Formulario: </strong>
+                    Cada elemento de entrada en el formulario, como un campo de texto o un botón de opción, 
+                    se representa como un objeto <strong class="recalcar-palabra">FormControl</strong>. 
+                    Los <strong class="recalcar-palabra">FormControl</strong> gestionan el estado del elemento de entrada, incluyendo su valor y estado de validación.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>FormGroup: </strong>
+                    Un <strong class="recalcar-palabra">FormGroup</strong> es un conjunto de <strong class="recalcar-palabra">FormControl</strong>s que representan un conjunto de campos relacionados en el formulario. 
+                    Proporciona métodos para realizar validaciones y realizar seguimiento del estado general del grupo.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>FormArray: </strong>
+                    Un <strong class="recalcar-palabra">FormArray</strong> es una matriz de <strong class="recalcar-palabra">FormControl</strong>s que se utiliza para manejar múltiples elementos de entrada, 
+                    como una lista de elementos. Es útil cuando necesitas trabajar con múltiples controles dinámicos.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Validación Programática: </strong>
+                    La validación de datos de entrada se realiza programáticamente en el código TypeScript utilizando funciones y reglas de validación personalizadas. 
+                    Esto brinda un mayor control sobre las reglas de validación.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Reactivo a Cambios: </strong>
+                    Los Reactive Forms son altamente reactivos. Puedes responder a los cambios en los valores de los formularios utilizando observables de RxJS, 
+                    lo que facilita el manejo de eventos asincrónicos y actualizaciones dinámicas.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Flexibilidad: </strong>
+                    Son ideales para formularios complejos o dinámicos, donde se necesita un mayor control, validaciones personalizadas o lógica específica.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <strong>Uso de Observables: </strong>
+                    Los Reactive Forms utilizan Observables para rastrear y responder a los cambios en los valores del formulario. 
+                    Esto facilita la detección de cambios y la interacción con los datos del formulario de manera reactiva.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <div class="col-12">
+              <p>
+                Un ejemplo de un Reactive Form en Angular podría verse así en TypeScript:
+              </p>
+<pre><code class="language-typescript">
+import &#123; Component &#125; from '@angular/core';
+import &#123; FormBuilder, FormGroup, Validators &#125; from '@angular/forms';
+
+@Component(&#123;
+  selector: 'app-mi-componente',
+  templateUrl: './mi-componente.component.html',
+&#125;)
+export class MiComponente &#123;
+  miFormulario: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) &#123;
+    this.miFormulario = this.formBuilder.group(&#123;
+      nombre: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email]],
+    &#125;);
+  &#125;
+
+  enviarDatos() &#123;
+    if (this.miFormulario.valid) &#123;
+      // Realizar acción con los datos del formulario
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+<pre><code class="language-html">
+&lt;form [formGroup]="miFormulario" (ngSubmit)="enviarDatos()"&gt;
+  &lt;div&gt;
+    &lt;label for="nombre">Nombre:&lt;/label&gt;
+    &lt;input type="text" id="nombre" formControlName="nombre"&gt;
+    &lt;div *ngIf="miFormulario.get('nombre').invalid && miFormulario.get('nombre').touched"&gt;
+      &lt;div *ngIf="miFormulario.get('nombre').hasError('required')">El nombre es obligatorio.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;label for="correo">Correo Electrónico:&lt;/label&gt;
+    &lt;input type="email" id="correo" formControlName="correo"&gt;
+    &lt;div *ngIf="miFormulario.get('correo').invalid && miFormulario.get('correo').touched"&gt;
+      &lt;div *ngIf="miFormulario.get('correo').hasError('required')">El correo es obligatorio.&lt;/div&gt;
+      &lt;div *ngIf="miFormulario.get('correo').hasError('email')">El correo no es válido.&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;button type="submit" [disabled]="miFormulario.invalid"&gt;Enviar&lt;/button&gt;
+&lt;/form>
+</code></pre>
+              <p>
+                En este ejemplo, se crea un formulario reactivamente utilizando <strong class="recalcar-palabra">FormGroup</strong>, 
+                <strong class="recalcar-palabra">FormControl</strong>, y <strong class="recalcar-palabra">Validators</strong> para definir reglas de validación.
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                En resumen, los Reactive Forms en Angular son una forma programática y altamente flexible de crear formularios, ideales para 
+                formularios complejos o casos donde se necesita un mayor control sobre la lógica del formulario y las validaciones.
+              </p>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 14 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Comunicación entre componentes: @Input y @Output</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Comunicación entre componentes: @Input y @Output</h5>
+              <p>
+                En Angular, <strong class="recalcar-palabra">@Input</strong> y <strong class="recalcar-palabra">@Output</strong> son dos decoradores clave 
+                que se utilizan para facilitar la comunicación entre componentes, 
+                especialmente cuando se trabaja con componentes anidados o componentes que necesitan compartir datos y eventos entre sí.
+              </p>
+            </div>
+            <div class="col-12">
+              <h5>@Input</h5>
+              <ul>
+                <li>
+                  <p>
+                    El decorador <strong class="recalcar-palabra">@Input</strong> se utiliza para exponer propiedades de un componente hijo 
+                    para que puedan ser pasadas como datos desde un componente padre.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Permite que el componente padre envíe datos al componente hijo.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Puedes decorar una propiedad en el componente hijo con <strong class="recalcar-palabra">@Input</strong> para convertirla en una 
+                    propiedad que puede ser asignada desde el componente padre.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Cuando el componente padre asigna un valor a la propiedad decorada con <strong class="recalcar-palabra">@Input</strong>, 
+                    ese valor se refleja automáticamente en el componente hijo.
+                  </p>
+                </li>
+              </ul>
+              <p>
+                Ejemplo:
+              </p>
+<pre><code class="language-typescript">
+import &#123; Component, Input &#125; from '@angular/core';
+
+@Component(&#123;
+  selector: 'app-hijo',
+  template: '&lt;p&gt; &#123; &#123; mensaje &#125; &#125; &lt;/p&gt;'
+&#125;)
+export class HijoComponent &#123;
+  @Input() mensaje: string;
+&#125;
+</code></pre>
+            </div>
+            <div class="col-12">
+              <h5>@Output</h5>
+              <ul>
+                <li>
+                  <p>
+                    El decorador <strong class="recalcar-palabra">@Output</strong> se utiliza para emitir eventos desde un componente 
+                    hijo para que puedan ser escuchados y manejados por un componente padre.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Permite que el componente hijo notifique al componente padre sobre eventos importantes o cambios en su estado.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Debes decorar una propiedad en el componente hijo con <strong class="recalcar-palabra">@Output</strong> y asignarle 
+                    una instancia de <strong class="recalcar-palabra">EventEmitter</strong> para poder emitir eventos.
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    El componente padre puede suscribirse a estos eventos utilizando el binding de eventos en la plantilla HTML.
+                  </p>
+                </li>
+              </ul>
+              <p>
+                Ejemplo:
+              </p>
+<pre><code class="language-typescript">
+import &#123; Component, Output, EventEmitter &#125; from '@angular/core';
+
+@Component(&#123;
+  selector: 'app-hijo',
+  template: '&lt;button (click)="emitirMensaje()"&gt;Enviar Mensaje&lt;/button&gt;'
+&#125;)
+export class HijoComponent &#123;
+  @Output() mensajeEnviado = new EventEmitter&lt;string&gt;();
+
+  emitirMensaje() &#123;
+    this.mensajeEnviado.emit('Hola desde el hijo');
+  &#125;
+&#125;
+</code></pre>
+              <p>
+                En el componente padre:
+              </p>
+<pre><code class="language-html">
+&lt;app-hijo (mensajeEnviado)="manejarMensaje($event)"&gt;&lt;/app-hijo&gt;
+</code></pre>
+<pre><code class="language-typescript">
+import &#123; Component &#125; from '@angular/core';
+
+@Component(&#123;
+  selector: 'app-padre',
+  template: '&lt;app-hijo&gt;&lt;/app-hijo&gt;'
+&#125;)
+export class PadreComponent &#123;
+  manejarMensaje(mensaje: string) &#123;
+    console.log(`Mensaje recibido en el componente padre: $&#123;mensaje&#125;`);
+  &#125;
+&#125;
+</code></pre>
+            </div>
+            <div class="col-12">
+              <p>
+                En resumen, <strong class="recalcar-palabra">@Input</strong> se utiliza para pasar datos desde un componente padre a un componente hijo, 
+                mientras que <strong class="recalcar-palabra">@Output</strong> se utiliza para emitir eventos desde un componente 
+                hijo para que el componente padre los escuche y responda. 
+                Estos decoradores son fundamentales para la comunicación entre componentes en Angular.
+              </p>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+    <div [style.display]="itemMenuVisible === 15 ? '' : 'none'" class="panel-windows">
+      <div class="panel-windows-titulo">
+        <h5>Comunicación entre componentes: Signals</h5>
+      </div>
+      <div class="panel-windows-cuerpo">
+        <p-scrollPanel [style]="{height: '600px'}">
+          <div class="grid p-fluid">
+            <div class="col-12">
+              <h5>Signals</h5>
+              <p>
+                Un <strong class="recalcar-palabra">signal</strong> es un envoltorio alrededor de un valor que puede notificar a los consumidores interesados 
+                cuando ese valor cambia. Los <strong class="recalcar-palabra">signal</strong>s pueden contener cualquier valor, desde primitivas simples hasta estructuras de datos complejas.
+              </p>
+              <p>
+                El valor de un <strong class="recalcar-palabra">signal</strong> siempre se lee a través de una función captadora, que permite a Angular rastrear dónde se utiliza la señal.
+              </p>
+              <p>
+                Los <strong class="recalcar-palabra">signal</strong>s pueden ser de escritura o de sólo lectura.
+              </p>
+            </div>
+            <div class="col-12">
+              <p>
+                Uso:
+              </p>
+              <p>
+                La manera de utilización aun no esta definida, ya que se encuentra aun en modo de develop, es por este 
+                motivo que se presentará un caso de uso basado en store.
+              </p>
+              <ul>
+                <li>
+                  <p>
+                    <strong>Creación de store signal: </strong>
+                    Dentro de una carpeta llamada signal ubicada en <strong class="recalcar-palabra">providers/signals</strong>, se 
+                    creará un nuevo archivo llamado <strong class="recalcar-palabra">signal.store.ts</strong> (El nombre puede variar). 
+                    importaremos signal desde <strong class="recalcar-palabra">@angular/core</strong> y crearemos las variables que utilizacermos de 
+                    tipo signal.
+                  </p>
+<pre><code class="language-typescript">
+import &#123; signal, WritableSignal &#125; from '@angular/core';
+// Variable de tipo WritableSignal numérico, inicializada con 
+// un valor signal numérico en 0.
+const sumaSignal: WritableSignal&lt;number&gt; = signal&lt;number&gt;(0);
+
+export &#123;
+  sumaSignal
+&#125;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Importación en el componente: </strong>
+                    En el componente en el que se utilizará este signal, importaremos el store anteriormente 
+                    creado y crearemos 2 funciones, una en la cual llamaremos al valor del signal y otra para 
+                    modificar dicho valor.
+                  </p>
+<pre><code class="language-typescript">
+import &#123; Component, WritableSignal &#125; from '@angular/core';
+import &#123; sumaSignal &#125; from '@signals/signal.store';
+
+@Component(&#123;
+  selector: 'app-padre',
+  templateUrl: './padre.component.html',
+  styleUrls: ['./padre.component.scss']
+&#125;)
+export class PadreComponent &#123;
+
+  // Función para visualizar el signal
+  get signalSuma(): WritableSignal&lt;number&gt;&#123;
+    return sumaSignal;
+  &#125;
+
+  // Función que permite asignar un valor al signal
+  realizarSumaSignal(): void&#123;
+    const suma: number = 40;
+    sumaSignal.set(suma);
+  &#125;
+&#125;
+</code></pre>
+                  <p>
+                    <!-- Para que estos <strong class="recalcar-palabra">signal</strong>s sean visualizados en el HTML, debemos de 
+                    llamarlo como una variable normal, pero con parentesis de esta manera: <strong class="recalcar-palabra">signal</strong> -->
+                    Como se puede observar en el fragmento de código, la función llamada <strong class="recalcar-palabra">realizarSumaSignal()</strong> es 
+                    la encargada de asignar el valor suma al signal que hemos creado mediante el método <strong class="recalcar-palabra">set()</strong> de esta misma y 
+                    para mostrar los datos en el HTML, hemos creado una función de que retorna nuestro signal llamada <strong class="recalcar-palabra">get signalSuma()</strong>, 
+                    esta función es opcional, pero es una muy buena práctica su utilización. Para que estos <strong class="recalcar-palabra">signal</strong>s sean visualizados en el HTML, debemos de 
+                    llamarlo como una variable normal, pero con parentesis de esta manera: 
+                  </p>
+<pre><code class="language-html">
+&lt;p&gt; &#123; &#123; signalSuma() &#125; &#125; &lt;/p&gt;
+</code></pre>
+                </li>
+                <li>
+                  <p>
+                    <strong>Asignación de valores: </strong>
+                    Los <strong class="recalcar-palabra">signal</strong>s, poseen hasta el momento diversas funciones para la asignación de datos, las cuales pueden ser las siguiente:
+                  </p>
+                  <ul>
+                    <li>
+                      <p>
+                        <strong>Inicialización: </strong>
+                        Todo sigan debe de ser inicializado, aquí un ejemplo:
+                      </p>
+<pre><code class="language-typescript">
+const count = signal(0);
+// Signals are getter functions - calling them reads their value.
+console.log('The count is: ' + count());
+</code></pre>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Actualización: </strong>
+                        Para cambiar el valor del <strong class="recalcar-palabra">signal</strong>s, se utilizará la función <strong class="recalcar-palabra">.set()</strong>. 
+                        o se puede utilizar <strong class="recalcar-palabra">.update()</strong> para calcular un nuevo valor a partir del anterior.
+                      </p>
+<pre><code class="language-typescript">
+count.set(3);
+
+// Incrementar el contador en 1
+count.update(value => value + 1);
+</code></pre>
+                    </li>
+                    <li>
+                      <p>
+                        <strong>Actualización matriz: </strong>
+                        Cuando se trabaja con <strong class="recalcar-palabra">signal</strong>s que contienen objetos, a veces resulta útil mutar ese objeto directamente. 
+                        Por ejemplo, si el objeto es una matriz, es posible que desee insertar un nuevo valor sin reemplazar la matriz por completo. 
+                        Para realizar un cambio interno como este, use el método <strong class="recalcar-palabra">.mutate</strong>.
+                      </p>
+<pre><code class="language-typescript">
+const todos = signal([&#123;title: 'Learn signals', done: false&#125;]);
+
+todos.mutate(value => &#123;
+  // Cambie el primer TODO en la matriz a 'done: true' sin reemplazarlo.
+  value[0].done = true;
+&#125;);
+</code></pre>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <p>
+                    <strong>Effects: </strong>
+                    Las señales son útiles porque pueden notificar a los consumidores interesados cuando cambian. 
+                    Un efecto es una operación que se ejecuta cada vez que uno o más valores de señal cambian. 
+                    Los efectos siempre se ejecutan al menos una vez. Cuando se ejecuta un efecto, rastrea cualquier valor de señal leído. 
+                    Siempre que cualquiera de estos valores de señal cambie, el efecto se ejecutará nuevamente.
+                  </p>
+<pre><code class="language-typescript">
+constructor()&#123;
+  effect(() => &#123;
+    console.log(`El valor del signal a cambiado: $&#123;sumaSignal()&#125;`);
+  &#125;);
+&#125;
+</code></pre>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p-scrollTop target="parent" styleClass="custom-scrolltop" [threshold]="100" icon="pi pi-arrow-up"></p-scrollTop>
+        </p-scrollPanel>
+      </div>
+    </div>
+
+  </div>
+</div>

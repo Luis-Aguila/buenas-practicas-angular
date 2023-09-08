@@ -2,6 +2,15 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "@interfaces/*": ["src/app/providers/interfaces/*"],
+      "@models/*": ["src/app/providers/models/*"],
+      "@pipes/*": ["src/app/providers/pipes/*"],
+      "@services/*": ["src/app/providers/services/*"],
+      "@signals/*": ["src/app/providers/signals/*"],
+      "@shared/*": ["src/app/shared/*"],
+      "@pages/*": ["src/app/pages/*"]
+    },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
